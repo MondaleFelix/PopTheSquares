@@ -30,9 +30,14 @@ class GameScene: SKScene {
         
     
         let moveUP = SKAction.moveTo(y: (self.scene?.frame.size.height)!, duration: 2)
-
-        square.run(moveUP)
+        let deleteSqaure = SKAction.removeFromParent()
         
+        square.run(moveUP)
+        //        Group all the actions into one sequence
+                let actionSequence = SKAction.sequence([moveUP, deleteSqaure])
+        //        Have sequence repeat forever and add it to the square
+                square.run(SKAction.repeatForever(actionSequence))
+        //        Add square to parent view
 
         addChild(square)
     }
