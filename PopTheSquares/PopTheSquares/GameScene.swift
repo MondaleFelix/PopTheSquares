@@ -28,6 +28,12 @@ class GameScene: SKScene {
         square.position.x = 200
         square.position.y = 0
         
+    
+        let moveUP = SKAction.moveTo(y: (self.scene?.frame.size.height)!, duration: 2)
+
+        square.run(moveUP)
+        
+
         addChild(square)
     }
 }
