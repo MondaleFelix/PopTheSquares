@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 
+
 class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
@@ -19,7 +20,18 @@ class GameScene: SKScene {
         // Called before each frame is rendered
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let positionInScene = touch.location(in: self)
+        
+        let touchedNode = self.atPoint(positionInScene)
+        if touchedNode.position.x > 0 {
+            print("touched")
+            touchedNode.removeFromParent()
+            newSquare()
+        }
+    }
+
     func newSquare() {
     
         //Set up the squares properties
@@ -31,6 +43,10 @@ class GameScene: SKScene {
 
         square.position.x = randomNumber
         square.position.y = 0
+        
+        
+//      name property is required
+//        sqaure.name = "pineapple"
         
 //      Action that moves the square up
         let moveUp = SKAction.customAction(withDuration: 2) { (square, _) in
