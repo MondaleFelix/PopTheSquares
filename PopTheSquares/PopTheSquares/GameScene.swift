@@ -11,7 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
-        moveUp()
+        newSquare()
     }
     
     
@@ -19,13 +19,16 @@ class GameScene: SKScene {
         // Called before each frame is rendered
     }
     
-    //Move square in a circle!
-    func moveUp() {
+    
+    func newSquare() {
     
         //Set up the squares properties
         let size = CGSize(width: 80, height: 80)
         let square = SKSpriteNode(texture: nil, color: .green, size: size)
-        square.position.x = 200
+        
+        let randomNumber = CGFloat.random(in: 0 ... self.view!.bounds.width)
+
+        square.position.x = randomNumber
         square.position.y = 0
         
         let moveUp = SKAction.customAction(withDuration: 2) { (square, _) in
