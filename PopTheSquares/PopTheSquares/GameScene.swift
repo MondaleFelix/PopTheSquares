@@ -10,9 +10,12 @@ import GameplayKit
 
 
 class GameScene: SKScene {
-    
+
     override func didMove(to view: SKView) {
         newSquare()
+        newSquare()
+        newSquare()
+
     }
     
     
@@ -25,6 +28,7 @@ class GameScene: SKScene {
         let positionInScene = touch.location(in: self)
         
         let touchedNode = self.atPoint(positionInScene)
+        
         if touchedNode.position.x > 0 {
             print("touched")
             touchedNode.removeFromParent()
@@ -44,9 +48,6 @@ class GameScene: SKScene {
         square.position.x = randomNumber
         square.position.y = 0
         
-        
-//      name property is required
-//        sqaure.name = "pineapple"
         
 //      Action that moves the square up
         let moveUp = SKAction.customAction(withDuration: 2) { (square, _) in
